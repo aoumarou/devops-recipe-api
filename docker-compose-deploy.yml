@@ -6,14 +6,15 @@ services:
       context: .
     restart: always
     volumes:
-      - static-data:/vol/web
+      - static-data:/vol/web/static
+      - media-data:/vol/web/media
     environment:
       - DB_HOST=db
-      - DB_NAME=${DB_NAME}
-      - DB_USER=${DB_USER}
-      - DB_PASS=${DB_PASS}
-      - SECRET_KEY=${DJANGO_SECRET_KEY}
-      - ALLOWED_HOSTS=${DJANGO_ALLOWED_HOSTS}
+      - DB_NAME=dbname
+      - DB_USER=rootuser
+      - DB_PASS=changeme
+      - SECRET_KEY=changeme
+      - ALLOWED_HOSTS=127.0.0.1
     depends_on:
       - db
 
@@ -23,9 +24,9 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=${DB_NAME}
-      - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_DB=dbname
+      - POSTGRES_USER=rootuser
+      - POSTGRES_PASSWORD=changeme
 
   proxy:
     build:
@@ -37,7 +38,9 @@ services:
       - 80:8000
     volumes:
       - static-data:/vol/static
+      - media-data:/vol/media
 
 volumes:
   postgres-data:
   static-data:
+  media-data:
