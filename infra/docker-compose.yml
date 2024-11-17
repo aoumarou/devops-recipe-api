@@ -1,0 +1,13 @@
+services:
+  terraform:
+    image: hashicorp/terraform:1.6.2
+    volumes:
+      - ./setup:/tf/setup
+      - ./deploy:/tf/deploy
+    working_dir: /tf
+    environment:
+      - AWS_ACCESS_KEY_ID=ASIAT7JJVDFD42ANC6XS
+      - AWS_SECRET_ACCESS_KEY=ouROe3GXZ7Zk1WL6gvAkAGYIZpP6Zms/KnPrw1RK
+      - AWS_SESSION_TOKEN=IQoJb3JpZ2luX2VjEK7//////////wEaCWV1LXdlc3QtMSJHMEUCIQCSXMEUFm1izWDE7VoJgKVCHV1kpuVay2XFs2TKYa0WkgIgfYib1DcPRtE/5JQj4aVf6ryUBSPOUB71pTuOfx+kNLYq9AIIRhAAGgwyNzMzNTQ2NjAxNjciDKozqGaNAZwsDXY+SyrRArEWBcVeh1CqczioCwrI3bKOc9cREjdmbPnAcScM38SkMPVO8E6jNMJaNTd/7aynlrU/5SfEcYLgNbqfMHomChsqpSuaCbigu969F4BTlWAdK+5FAVFv5N2hGI0ZIk3QtqSqo6wVErtkErrT68pXLwR1UVCmIhgn/EHiRZvrZ6zgKQku+bLhJv9Ogq7z7gO+hGSaXDDhU7p9WGD0SjZKqLp6y9qmkBWUioJBCFgXzs4/HTKLOGVOEK1GZsMWixQKBPDOgpi7dZ4pRxLUuQxvHHANjMFevVx45FQKNEFhtzGWfGPSS/+qW43bsbZOvn6nNdfA8/ggOmiWFsTBkuVGCdGw0dfrnY339MnZJZY7GYIaC5UC4Vb/rvSVonjRSUHszx/ukzxc1FddBVIil4nrKwFhZw1fR471zdC06VKNj/83n6Vm2Mz1eDDaIslyvacub+Ewk9jnuQY6pwG12IWeYTnSD4Ulh5Cz43qbNhL3IQw6fPmJRZgEbCuRDuLvrNBQoXrMcLJKds6JMS+txFku3DpaqlueDpDtlRGDKlvnbrQxb6kWb6xRdp8pXocccMacsiwEfNGi+cgN2GQZCyE8eqUEd/hKCzb35rYxX5FwbCsvLtY4JfMMLoWXr7sjn6eA2tPmrkRCTiga8r3CWT/6gBmmHTxsa0dl3gkNd2M0gnEOSQ==
+      - AWS_DEFAULT_REGION=us-east-1
+      - TF_WORKSPACE=${TF_WORKSPACE}
