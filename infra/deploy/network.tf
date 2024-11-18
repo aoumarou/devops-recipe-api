@@ -15,13 +15,12 @@ resource "aws_internet_gateway" "main" {
 
 
 # Public Subnet for Load balancer public access
-# Public - A
 resource "aws_subnet" "public_a" {
-  vpc_id     = aws_vpc.main.id
-  cidr_block = "10.1.1.0/24"
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = "10.1.1.0/24"
   map_public_ip_on_launch = true
-  availability_zone = "${data.aws_region.current.name}a"
-    
+  availability_zone       = "${data.aws_region.current.name}a"
+
   tags = {
     Name = "${local.prefix}-public-a"
   }
@@ -41,19 +40,17 @@ resource "aws_route_table_association" "public_a" {
 }
 
 resource "aws_route" "public_internet_access_a" {
-  route_table_id            = aws_route_table.public_a.id
-  destination_cidr_block    = "0.0.0.0/0"
-  gateway_id                = aws_internet_gateway.main.id
+  route_table_id         = aws_route_table.public_a.id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = aws_internet_gateway.main.id
 }
 
-
-#Public - B
 resource "aws_subnet" "public_b" {
-  vpc_id     = aws_vpc.main.id
-  cidr_block = "10.1.2.0/24"
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = "10.1.2.0/24"
   map_public_ip_on_launch = true
-  availability_zone = "${data.aws_region.current.name}b"
-    
+  availability_zone       = "${data.aws_region.current.name}b"
+
   tags = {
     Name = "${local.prefix}-public-b"
   }
@@ -72,9 +69,8 @@ resource "aws_route_table_association" "public_b" {
   route_table_id = aws_route_table.public_b.id
 }
 
-
 resource "aws_route" "public_internet_access_b" {
-  route_table_id            = aws_route_table.public_b.id
-  destination_cidr_block    = "0.0.0.0/0"
-  gateway_id                = aws_internet_gateway.main.id
+  route_table_id         = aws_route_table.public_b.id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = aws_internet_gateway.main.id
 }
